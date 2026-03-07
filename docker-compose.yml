@@ -1,7 +1,7 @@
 services:
   app:
-    image: computervision:0.0.2
-    container_name: computervision
+    image: audiotranscription:0.0.1
+    container_name: audiotranscription
     deploy:
       resources:
         reservations:
@@ -14,17 +14,15 @@ services:
       network: host
       dockerfile: Dockerfile
       args:
-        - DEV_computervision=1
+        - DEV_audiotranscription=1
     ipc: host
     env_file:
       - ./.env
     ports:
       - "8888:8888"
-      - "6006:6006"
     volumes:
       - .:/app
-      - app_data:/app/data
-      - /home/andreas/data/data_model:/app/data_model
+      - ${DATA_DIR}:/app/data
 volumes:
   app_data:
     external: false
