@@ -1,9 +1,9 @@
-FROM nvcr.io/nvidia/pytorch:25.08-py3 AS base
+FROM nvcr.io/nvidia/pytorch:26.02-py3 AS base
 
 # Install UV
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-ARG DEV_computervision
+ARG DEV_audiotranscription
 
 ENV \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -23,9 +23,8 @@ ENV \
     UV_TOOL_BIN_DIR=/usr/bin \
     UV_PROJECT_ENVIRONMENT=/usr
 
-# Ports for jupyter and tensorboard
+# Ports for jupyter
 EXPOSE 8888
-EXPOSE 6006
 
 RUN mkdir -p /app
 WORKDIR /app
@@ -41,25 +40,17 @@ RUN --mount=type=cache,target=/root/.cache/uv \
      uv sync --inexact
 
 # Install the project
-COPY src/computervision/__init__.py \
-    src/computervision/VERSION src/computervision
+COPY src/audiotranscription/__init__.py \
+    src/audiotranscription/VERSION src/audiotranscription
 COPY pyproject.toml uv.lock ./
 RUN uv sync --inexact
 
 # Dependencies that depend on the container's libraries
 RUN python -m pip install -U \
-    "numpy<2.0" \
-    torchmetrics \
-    timm \
-    accelerate \
-    lightning \
-    opencv-python \
-    grad-cam
+    accelerate
 
 RUN python -c "from accelerate.utils import write_basic_config; write_basic_config(mixed_precision='fp16')"
 
-# Detectron2 library
-RUN python -m pip install "git+https://github.com/facebookresearch/detectron2.git"
 
 # Copy bash scripts and set executable flags
 RUN mkdir -p /run_scripts
