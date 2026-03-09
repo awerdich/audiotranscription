@@ -7,7 +7,10 @@ authors = [
     { name = "Andreas Werdich", email = "ccbhelp@hms.harvard.edu" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "jupyterlab>=4.5.5",
+    "whisperx>=3.8.1",
+]
 
 [project.scripts]
 audiotranscription = "audiotranscription:main"
@@ -19,7 +22,7 @@ requires = ["setuptools>=41,<81",
 build-backend = "setuptools.build_meta"
 
 [tool.uv]
-python-preference = "managed"
+python-preference = "system"
 
 [tool.setuptools.package-data]
 # include VERSION file to a package
