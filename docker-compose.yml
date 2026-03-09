@@ -22,7 +22,8 @@ services:
       - "8888:8888"
     volumes:
       - .:/app
-      - ${DATA_DIR}:/app/data
+      - ${INPUT_DIR}:/app/data/input
+      - ${OUTPUT_DIR}:/app/data/output
 volumes:
   app_data:
     external: false
