@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/pytorch:26.02-py3 AS base
+FROM nvcr.io/nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04 AS base
 
 # Install UV
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
@@ -23,34 +23,34 @@ ENV \
     UV_TOOL_BIN_DIR=/usr/bin \
     UV_PROJECT_ENVIRONMENT=/usr
 
+# Set non-interactive frontend for apt
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Make sure "python" refers to the system Python
+RUN ln -sf /usr/bin/python3 /usr/local/bin/python
+
+RUN apt-get -y update && \
+    apt-get -y install \ 
+    libgl1 \
+    ffmpeg
+
 # Ports for jupyter
 EXPOSE 8888
 
 RUN mkdir -p /app
 WORKDIR /app
 
-RUN apt-get -y update && \
-    apt-get -y install libgl1
-
 # Install the project's dependencies using the lockfile and settings
 RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=.git,target=.git \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-     uv sync --inexact
+    uv sync --locked --no-install-project
 
 # Install the project
 COPY src/audiotranscription/__init__.py \
     src/audiotranscription/VERSION src/audiotranscription
 COPY pyproject.toml uv.lock ./
-RUN uv sync --inexact
-
-# Dependencies that depend on the container's libraries
-RUN python -m pip install -U \
-    accelerate
-
-RUN python -c "from accelerate.utils import write_basic_config; write_basic_config(mixed_precision='fp16')"
-
+RUN uv sync --locked
 
 # Copy bash scripts and set executable flags
 RUN mkdir -p /run_scripts
