@@ -8,7 +8,10 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "ipywidgets>=8.1.8",
     "jupyterlab>=4.5.5",
+    "torchcodec==0.7",
+    "tqdm>=4.67.3",
     "whisperx>=3.8.1",
 ]
 
