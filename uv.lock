@@ -718,11 +718,11 @@ wheels = [
 
 [[package]]
 name = "filelock"
-version = "3.25.0"
+version = "3.25.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/77/18/a1fd2231c679dcb9726204645721b12498aeac28e1ad0601038f94b42556/filelock-3.25.0.tar.gz", hash = "sha256:8f00faf3abf9dc730a1ffe9c354ae5c04e079ab7d3a683b7c32da5dd05f26af3", size = 40158, upload-time = "2026-03-01T15:08:45.916Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b3/8b/4c32ecde6bea6486a2a5d05340e695174351ff6b06cf651a74c005f9df00/filelock-3.25.1.tar.gz", hash = "sha256:b9a2e977f794ef94d77cdf7d27129ac648a61f585bff3ca24630c1629f701aa9", size = 40319, upload-time = "2026-03-09T19:38:47.309Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f9/0b/de6f54d4a8bedfe8645c41497f3c18d749f0bd3218170c667bf4b81d0cdd/filelock-3.25.0-py3-none-any.whl", hash = "sha256:5ccf8069f7948f494968fc0713c10e5c182a9c9d9eef3a636307a20c2490f047", size = 26427, upload-time = "2026-03-01T15:08:44.593Z" },
+    { url = "https://files.pythonhosted.org/packages/a9/b8/2f664b56a3b4b32d28d3d106c71783073f712ba43ff6d34b9ea0ce36dc7b/filelock-3.25.1-py3-none-any.whl", hash = "sha256:18972df45473c4aa2c7921b609ee9ca4925910cc3a0fb226c96b92fc224ef7bf", size = 26720, upload-time = "2026-03-09T19:38:45.718Z" },
 ]
 
 [[package]]
@@ -3764,7 +3764,7 @@ wheels = [
 
 [[package]]
 name = "whisperx"
-version = "3.8.1"
+version = "3.8.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ctranslate2" },
@@ -3780,9 +3780,9 @@ dependencies = [
     { name = "transformers" },
     { name = "triton", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d1/71/b07cc44cc58766191d69d80cf7b8078236e3af7ac2727807a7de7a35aa11/whisperx-3.8.1.tar.gz", hash = "sha256:8aa85c4c5394237950483f3c17e930ff440de1f320f3ffa4608899d6843d9a29", size = 16489226, upload-time = "2026-02-14T14:01:50.011Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e5/27/3bca053985de3c0fd17d46a972705c4d1436ad072e775b4a612e7e2a35d2/whisperx-3.8.2.tar.gz", hash = "sha256:b200b28a6d3b49a805b17965a60313c161867b95d63d85482eb0e59e06149eed", size = 16488856, upload-time = "2026-03-10T14:48:03.922Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9f/83/d7e8c1f26b6457530bcecab1808a10bf6a7d3f4710acff245c40bc468817/whisperx-3.8.1-py3-none-any.whl", hash = "sha256:92cc441ea8550f236f81dd5e5b54b066f085a01b25c9016c553872381dee763a", size = 16486564, upload-time = "2026-02-14T14:01:47.304Z" },
+    { url = "https://files.pythonhosted.org/packages/1a/83/94d0bd25c0bc079d632086b4838b548ccfe00c074bd3056d72ec1cde2243/whisperx-3.8.2-py3-none-any.whl", hash = "sha256:8cc484a39f9647f186e6ee64bcde991f99828069c75cf0b2b1800d209a3c347d", size = 16485935, upload-time = "2026-03-10T14:47:59.883Z" },
 ]
 
 [[package]]
