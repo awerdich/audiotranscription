@@ -16,6 +16,11 @@ services:
       args:
         - DEV_audiotranscription=1
     ipc: host
+    environment:
+        - DATA_INPUT_DIR=/app/data/input
+        - DATA_OUTPUT_DIR=/app/data/output
+        - HF_HOME=/app/data/.cache
+        - TORCH_HOME=/app/data/.cache
     env_file:
       - ./.env
     ports:
@@ -24,6 +29,7 @@ services:
       - .:/app
       - ${INPUT_DIR}:/app/data/input
       - ${OUTPUT_DIR}:/app/data/output
+      - ${MODEL_DIR}:/app/data/.cache
 volumes:
   app_data:
     external: false
