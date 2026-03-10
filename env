@@ -1,2 +1,4 @@
-DATA_DIR="/home/andreas/data"
+INPUT_DIR=/home/andreas/data/ari_data/input
+OUTPUT_DIR=/home/andreas/data/ari_data/output
+MODEL_DIR=/home/andreas/data/huggingface.cache
 HF_TOKEN=hftoken
